@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SimpleTodo</string>
+    <string name="todo_title_sample_content">Building a new house without foundation</string>
+</resources>

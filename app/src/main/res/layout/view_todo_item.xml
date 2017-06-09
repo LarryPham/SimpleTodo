@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/todo_item_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_todo_item_height">
+
+    <CheckBox
+        android:id="@+id/checkbox_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:button="@drawable/ic_checkbox_complete" />
+
+    <ImageView
+        android:id="@+id/todo_item_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@null"
+        android:padding="5dp"
+        android:src="@drawable/ic_item_option" />
+
+    <TextView
+        android:id="@+id/textview_todo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@id/checkbox_complete"
+        android:layout_toLeftOf="@id/todo_item_options"
+        android:layout_toRightOf="@id/checkbox_complete"
+        android:layout_toStartOf="@id/todo_item_options"
+        android:text="@string/todo_title_sample_content"
+        android:textColor="@color/colorNormalText"
+        android:textSize="14sp" />
+</RelativeLayout>
