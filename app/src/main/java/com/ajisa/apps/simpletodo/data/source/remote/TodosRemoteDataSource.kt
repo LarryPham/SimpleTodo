@@ -31,31 +31,38 @@ class TodosRemoteDataSource private constructor(): TodosDataSource {
     }
 
     override fun completeTodo(todoId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // Not required for the remote data source.
     }
 
     override fun activateTodo(todo: Todo) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val activeTodo = Todo(todo.title, todo.description, todo.id, false)
+        TODOS_SERVICE_DATA.put(activeTodo.id, activeTodo)
     }
 
     override fun activateTodo(todoId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // Not required for the remote data source.
     }
 
     override fun clearCompletedTodos() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val it = TODOS_SERVICE_DATA.entries.iterator()
+        while (it.hasNext()) {
+            val entry = it.next()
+            if (entry.value.isCompleted) {
+                it.remove()
+            }
+        }
     }
 
     override fun refreshTodos() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // Not required at now.
     }
 
     override fun removeAllTodos() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODOS_SERVICE_DATA.clear()
     }
 
     override fun removeTodo(todoId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODOS_SERVICE_DATA.remove(todoId)
     }
 
     companion object {
@@ -68,6 +75,14 @@ class TodosRemoteDataSource private constructor(): TodosDataSource {
             addTodo("Build tower in Pisa", "Ground looks good, no foundation work required.")
             addTodo("Finish bridge in Tacoma", "Found awesome girders at half the cost.")
         }
+
+        val instance: TodosRemoteDataSource
+            get() {
+                if (INSTANCE == null) {
+                    INSTANCE = TodosRemoteDataSource()
+                }
+                return INSTANCE as TodosRemoteDataSource
+            }
 
         private fun addTodo(title: String, description: String) {
             val newTodo = Todo(title, description)
